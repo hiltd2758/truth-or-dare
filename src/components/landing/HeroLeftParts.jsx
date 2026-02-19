@@ -56,9 +56,8 @@ export function HeroSubtitle() {
         marginBottom: "clamp(16px,2vw,28px)",
       }}
     >
-      Không có câu hỏi nhẹ nhàng ở đây. Chỉ có những câu hỏi thật sâu, thách
-      thức táo bạo, và rất nhiều rượu. Mỗi pack có 10 Thật + 10 Thách riêng
-      biệt.
+      Không có câu hỏi nhẹ nhàng ở đây. Chỉ có những câu hỏi, thách thức táo
+      bạo, và rất nhiều rượu. Mỗi pack có 100 câu.
     </p>
   );
 }

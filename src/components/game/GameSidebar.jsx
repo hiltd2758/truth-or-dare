@@ -1,10 +1,7 @@
-import { DrunkoMeter } from "./DrunkoMeter";
 import { PlayerList } from "./PlayerList";
 import { GameHistory } from "./GameHistory";
 
 export function GameSidebar({
-  drinks,
-  rounds,
   players,
   currentPlayerIndex,
   history,
@@ -12,7 +9,6 @@ export function GameSidebar({
 }) {
   return (
     <div className="game-sidebar">
-      <DrunkoMeter drinks={drinks} rounds={rounds} />
       <PlayerList players={players} currentPlayerIndex={currentPlayerIndex} />
       <GameHistory history={history} />
       <button

@@ -18,19 +18,29 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
 
   return (
     <div className="overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal"
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "var(--black)",
+          border: "4px solid var(--yellow)",
+          boxShadow: "10px 10px 0 var(--yellow)",
+        }}
+      >
         <div
           style={{
             fontFamily: "'Oswald',sans-serif",
             fontSize: "2.4rem",
             letterSpacing: ".05em",
-            borderBottom: "4px solid var(--black)",
+            borderBottom: "4px solid var(--yellow)",
             paddingBottom: 16,
             marginBottom: 28,
+            color: "var(--yellow)",
           }}
         >
           NHẬP TÊN NGƯỜI CHƠI
         </div>
+
         <div
           style={{
             display: "flex",
@@ -46,6 +56,7 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
               fontWeight: 700,
               letterSpacing: ".12em",
               textTransform: "uppercase",
+              color: "rgba(255,255,255,.5)",
             }}
           >
             NGƯỜI CHƠI ({players.length}/8)
@@ -53,16 +64,18 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
           <button
             className="btn"
             style={{
-              background: "var(--black)",
-              color: "var(--yellow)",
+              background: "var(--yellow)",
+              color: "var(--black)",
               fontSize: ".8rem",
               padding: "6px 18px",
+              border: "2px solid var(--yellow)",
             }}
             onClick={add}
           >
             + THÊM
           </button>
         </div>
+
         <div
           style={{
             display: "grid",
@@ -79,7 +92,7 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
               <div
                 style={{
                   background: PLAYER_COLORS[i % PLAYER_COLORS.length],
-                  border: "2px solid var(--black)",
+                  border: "2px solid var(--yellow)",
                   width: 36,
                   height: 36,
                   display: "flex",
@@ -88,6 +101,7 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
                   fontFamily: "'Oswald',sans-serif",
                   fontSize: "1.1rem",
                   flexShrink: 0,
+                  color: "var(--black)",
                 }}
               >
                 {i + 1}
@@ -98,6 +112,12 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
                 value={p}
                 onChange={(e) => update(i, e.target.value)}
                 maxLength={16}
+                style={{
+                  background: "rgba(255,255,255,.08)",
+                  border: "2px solid rgba(255,255,255,.2)",
+                  color: "var(--white)",
+                  boxShadow: "none",
+                }}
               />
               {players.length > 2 && (
                 <button
@@ -108,7 +128,7 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
                     fontSize: "1.2rem",
                     cursor: "pointer",
                     flexShrink: 0,
-                    color: "var(--black)",
+                    color: "rgba(255,255,255,.4)",
                   }}
                 >
                   ✕
@@ -117,14 +137,17 @@ export function SetupModal({ selectedPackId, onStart, onClose }) {
             </div>
           ))}
         </div>
+
         <button
           className="btn"
           style={{
             width: "100%",
-            background: "var(--black)",
-            color: "var(--yellow)",
+            background: "var(--red)",
+            color: "var(--white)",
             fontSize: "2rem",
             padding: "18px",
+            border: "3px solid var(--red)",
+            boxShadow: "6px 6px 0 var(--yellow)",
           }}
           onClick={start}
         >
