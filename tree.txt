@@ -1,0 +1,37 @@
+
+/* REMOVED: Large monolithic component code moved to modular structure
+   - Styles moved to: src/constants/styles.js
+   - Data moved to: src/constants/data.js
+   - Components organized in: src/components/
+   
+   Component tree:
+   App
+   ├── Landing
+   │   ├── LandingHeader
+   │   │   └── Logo
+   │   ├── HeroLeft
+   │   │   ├── HeroTag
+   │   │   ├── HeroTitle
+   │   │   ├── HeroSubtitle
+   │   │   ├── HeroFeatures
+   │   │   └── GameInstructions
+   │   ├── HeroRight
+   │   │   ├── PreviewCard
+   │   │   └── PackCardSelector
+   │   ├── Ticker
+   │   └── SetupModal
+   └── Game
+       ├── GameTopbar
+       ├── GameSidebar
+       │   ├── DrunkoMeter
+       │   ├── PlayerList
+       │   ├── GameHistory
+       │   └── All-Drink Button
+       ├── GameMain
+       │   ├── InitialChoiceButtons
+       │   ├── QuestionCard
+       │   ├── FlashMessage
+       │   └── QuestionActions
+       ├── SkipModal
+       └── PartyFlashOverlay
+*/
