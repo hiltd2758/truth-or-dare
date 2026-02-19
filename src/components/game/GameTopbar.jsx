@@ -7,6 +7,7 @@ export function GameTopbar({ pack, rounds, drinks, onBack }) {
           background: "none",
           fontSize: "clamp(0.65rem,0.75vw,0.82rem)",
           padding: "5px 12px",
+          color: "#888"
         }}
         onClick={onBack}
       >
