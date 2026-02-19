@@ -6,7 +6,13 @@ import { GameMain } from "./GameMain";
 import { SkipModal } from "./SkipModal";
 import { PartyFlashOverlay } from "./PartyFlashOverlay";
 
-export function Game({ players, packId, onBack }) {
+export function Game({
+  players,
+  packId,
+  onBack,
+  darkMode = false,
+  setDarkMode = () => {},
+}) {
   const pack = PACKS.find((p) => p.id === packId) || PACKS[0];
 
   const [pidx, setPidx] = useState(0);
@@ -91,7 +97,14 @@ export function Game({ players, packId, onBack }) {
 
   return (
     <div className="game-wrapper">
-      <GameTopbar pack={pack} rounds={rounds} drinks={drinks} onBack={onBack} />
+      <GameTopbar
+        pack={pack}
+        rounds={rounds}
+        drinks={drinks}
+        onBack={onBack}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+      />
       <GameSidebar
         drinks={drinks}
         rounds={rounds}

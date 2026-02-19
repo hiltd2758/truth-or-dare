@@ -135,7 +135,10 @@ export const KEYWORD_MAP = {
     " thể dục": "do exercise",
     "GPA" : "GPA point",
     "PHP" : "PHP language programming",
-    "livestream" : "livestream"
+    "livestream" : "livestream",
+
+    "nghiện": "addicted",
+    "giấc mơ": "dream"
 };
 
 export function getGifTag(question = "", isTrue = true) {

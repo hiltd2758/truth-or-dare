@@ -1,4 +1,18 @@
-export function GameTopbar({ pack, rounds, drinks, onBack }) {
+import { playSound } from "../../utils/sound";
+
+export function GameTopbar({
+  pack,
+  rounds,
+  drinks,
+  onBack,
+  darkMode = false,
+  setDarkMode = () => {},
+}) {
+  const handleToggleDarkMode = () => {
+    playSound("click");
+    setDarkMode(!darkMode);
+  };
+
   return (
     <div className="game-topbar">
       <button
@@ -7,7 +21,7 @@ export function GameTopbar({ pack, rounds, drinks, onBack }) {
           background: "none",
           fontSize: "clamp(0.65rem,0.75vw,0.82rem)",
           padding: "5px 12px",
-          color: "#888"
+          color: "#888",
         }}
         onClick={onBack}
       >
@@ -52,6 +66,32 @@ export function GameTopbar({ pack, rounds, drinks, onBack }) {
           VÒNG #{rounds + 1}
         </div>
         <div className="stag">{drinks} LY</div>
+
+        <button
+          onClick={handleToggleDarkMode}
+          style={{
+            background: "transparent",
+            border: "2px solid var(--black)",
+            padding: "4px 10px",
+            cursor: "pointer",
+            fontSize: "clamp(0.7rem,0.8vw,0.9rem)",
+            fontFamily: "'Oswald', sans-serif",
+            letterSpacing: ".08em",
+            boxShadow: "2px 2px 0 var(--black)",
+            transition: "all 0.2s",
+          }}
+          onMouseEnter={(e) => {
+            e.target.style.transform = "translate(-2px,-2px)";
+            e.target.style.boxShadow = "4px 4px 0 var(--black)";
+          }}
+          onMouseLeave={(e) => {
+            e.target.style.transform = "none";
+            e.target.style.boxShadow = "2px 2px 0 var(--black)";
+          }}
+          title={darkMode ? "Light Mode" : "Dark Mode"}
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
       </div>
     </div>
   );

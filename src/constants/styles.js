@@ -11,6 +11,7 @@ export const GLOBAL_STYLES = `
   --yellow: #FFE600;
   --green:  #00C44F;
   --white:  #FFFFFF;
+  --text:   #111111;
   --b3: 3px solid var(--black);
   --b4: 4px solid var(--black);
   --sh:  4px 4px 0 var(--black);
@@ -22,6 +23,23 @@ export const GLOBAL_STYLES = `
   --space-lg:  clamp(1.5rem,  2vw,   2.5rem);
   --space-xl:  clamp(2rem,    2.5vw, 3.5rem);
   --sidebar-w: clamp(260px, 22%, 320px);
+}
+
+:root[data-dark-mode="true"] {
+  --bg:    #1C1711;   /* nâu tối ấm — echo lại --bg sáng (#F2EDE4) */
+  --black: #EDE8E0;   /* chữ sáng, vẫn có tint ấm thay vì trắng lạnh */
+  --white: #251E17;   /* surface card — sáng hơn bg một chút */
+  --text:  #EDE8E0;
+
+  /* Border & shadow dùng màu ấm thay vì đen thuần */
+  --b3: 3px solid #EDE8E0;
+  --b4: 4px solid #EDE8E0;
+  --sh:  4px 4px 0 #EDE8E0;
+  --sh2: 6px 6px 0 #EDE8E0;
+  --sh3: 8px 8px 0 #EDE8E0;
+
+  /* Accent giữ nguyên — vẫn pop trên nền tối */
+  /* --red, --blue, --yellow, --green không đổi */
 }
 
 html, body {

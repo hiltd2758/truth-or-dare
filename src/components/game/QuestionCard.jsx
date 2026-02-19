@@ -1,5 +1,6 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { getTenorGIF, getGifTag } from "../../utils/giphy";
+import { playSound } from "../../utils/sound";
 
 // Gộp gif + loading vào một reducer — tránh 2 setState riêng lẻ
 function gifReducer(state, action) {
@@ -18,6 +19,7 @@ export function QuestionCard({ mode, question, qKey }) {
     gif: null,
     loading: true,
   });
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -33,6 +35,19 @@ export function QuestionCard({ mode, question, qKey }) {
       cancelled = true;
     };
   }, [qKey, question, mode]);
+
+  const handleCopy = () => {
+    navigator.clipboard
+      .writeText(question)
+      .then(() => {
+        playSound("success");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(() => {
+        playSound("error");
+      });
+  };
 
   return (
     <div
@@ -88,14 +103,44 @@ export function QuestionCard({ mode, question, qKey }) {
       <div style={{ width: "100%" }}>
         <div
           style={{
-            fontFamily: "'Oswald', sans-serif",
-            fontSize: "clamp(0.8rem,0.95vw,1.05rem)",
-            opacity: 0.7,
-            letterSpacing: ".14em",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "clamp(4px,0.5vw,8px)",
             marginBottom: "clamp(8px,1vw,14px)",
           }}
         >
-          {mode === "truth" ? "THẬT" : "THÁCH"}
+          <div
+            style={{
+              fontFamily: "'Oswald', sans-serif",
+              fontSize: "clamp(0.8rem,0.95vw,1.05rem)",
+              opacity: 0.7,
+              letterSpacing: ".14em",
+            }}
+          >
+            {mode === "truth" ? "THẬT" : "THÁCH"}
+          </div>
+          <button
+            onClick={handleCopy}
+            style={{
+              background: "rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.2)",
+              color: "var(--white)",
+              padding: "4px 8px",
+              fontSize: "clamp(0.6rem,0.7vw,0.8rem)",
+              cursor: "pointer",
+              fontFamily: "'Space Mono', monospace",
+              borderRadius: "2px",
+              transition: "all 0.2s",
+              opacity: copied ? 1 : 0.6,
+              backgroundColor: copied
+                ? "rgba(0,196,79,0.3)"
+                : "rgba(255,255,255,0.1)",
+            }}
+            title="Copy question"
+          >
+            {copied ? "✓ COPIED" : "COPY"}
+          </button>
         </div>
         <div
           style={{
